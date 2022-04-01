@@ -11,7 +11,6 @@ export const Reviews = () => {
       try {
         const reviews = await API.fetchGetMoviesReviews(movieId);
         setReviews(reviews);
-        console.log(reviews);
       } catch (error) {
         console.log(error);
       }

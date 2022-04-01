@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Cast, Reviews } from '../pages';
+//import { Cast, Reviews } from '../pages';
 
 import { Layout } from './Layout';
 
@@ -19,8 +19,8 @@ const createChunk = componentName => {
 const HomePage = createChunk('HomePage');
 const MoviesPage = createChunk('MoviesPage');
 const MovieDetailsPage = createChunk('MovieDetailsPage');
-//const Cast = createChunk('Cast');
-//const Reviews = createChunk('Reviews');
+const Cast = createChunk('Cast');
+const Reviews = createChunk('Reviews');
 
 const API_KEY = '61d280fbc4e0ab3fee827783c53f7600';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -32,8 +32,6 @@ export const fetchGetMoviesReviews = async id => {
   );
   return reviews.data.results;
 };
-
-console.log(fetchGetMoviesReviews(646385));
 
 export const App = () => {
   return (

@@ -12,7 +12,6 @@ export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams('');
 
   const query = searchParams.get('query') || '';
-  console.log(searchParams.get('query'));
 
   const inputEl = useRef(null);
 
