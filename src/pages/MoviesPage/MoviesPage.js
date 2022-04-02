@@ -39,9 +39,11 @@ export const MoviesPage = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
+    if (query === '') {
+      toast.error(`Enter the movie name.`);
+    }
     setSearchParams({ query: inputEl.current.value.toLowerCase() });
   };
-
   return (
     <>
       {' '}

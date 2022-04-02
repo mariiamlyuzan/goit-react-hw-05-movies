@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
-//import { Cast, Reviews } from '../pages';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import { Layout } from './Layout';
+//import { NotFound } from '../pages/NotFound';
 
 const createChunk = componentName => {
   return lazy(() =>
@@ -22,28 +22,19 @@ const MovieDetailsPage = createChunk('MovieDetailsPage');
 const Cast = createChunk('Cast');
 const Reviews = createChunk('Reviews');
 
-const API_KEY = '61d280fbc4e0ab3fee827783c53f7600';
-const BASE_URL = 'https://api.themoviedb.org/3/';
-//import axios from 'axios';
-const axios = require('axios');
-export const fetchGetMoviesReviews = async id => {
-  const reviews = await axios.get(
-    `${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}`,
-  );
-  return reviews.data.results;
-};
-
 export const App = () => {
   return (
     <Suspense fallback={<h2>Load....</h2>}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="movies/*" element={<MoviesPage />} />
+
+          <Route path="movies" element={<MoviesPage />} />
           <Route path="movies/:movieId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Route>
       </Routes>
     </Suspense>

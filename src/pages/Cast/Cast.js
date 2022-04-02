@@ -21,22 +21,19 @@ export const Cast = () => {
 
   return (
     <>
-      <ul>
-        {cast &&
-          cast.map(({ id, profile_path, original_name, name, character }) => {
-            return (
-              <ul key={id}>
-                <img
-                  width="200px"
-                  src={url + profile_path}
-                  alt={original_name}
-                />
-                <li>{name}</li>
-                <li>Character: {character}</li>
-              </ul>
-            );
-          })}
-      </ul>
+      {cast && cast.length > 0 ? (
+        cast.map(({ id, profile_path, original_name, name, character }) => {
+          return (
+            <ul key={id}>
+              <img width="200px" src={url + profile_path} alt={original_name} />
+              <li>{name}</li>
+              <li>Character: {character}</li>
+            </ul>
+          );
+        })
+      ) : (
+        <p>We do not have reviews for this movie.</p>
+      )}
     </>
   );
 };
