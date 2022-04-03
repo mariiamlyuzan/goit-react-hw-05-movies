@@ -11,7 +11,7 @@ export const MoviesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams('');
 
-  const query = searchParams.get('query') || '';
+  const query = searchParams.get('query');
 
   const inputEl = useRef(null);
 
@@ -39,11 +39,11 @@ export const MoviesPage = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (query === '') {
-      toast.error(`Enter the movie name.`);
-    }
     setSearchParams({ query: inputEl.current.value.toLowerCase() });
   };
+  if (query === '') {
+    toast.error(`Enter the movie name.`);
+  }
   return (
     <>
       {' '}
