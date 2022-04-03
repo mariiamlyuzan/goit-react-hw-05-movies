@@ -41,9 +41,7 @@ export const MoviesPage = () => {
 
     setSearchParams({ query: inputEl.current.value.toLowerCase() });
   };
-  if (query === '') {
-    toast.error(`Enter the movie name.`);
-  }
+
   return (
     <>
       {' '}
@@ -53,6 +51,7 @@ export const MoviesPage = () => {
           autoComplete="off"
           placeholder="Search movies..."
           ref={inputEl}
+          required
         />
         <button type="submit">Search</button>
       </form>
